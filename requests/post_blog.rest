@@ -2,7 +2,7 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-    "title": "My first blog",
+    "title": "Lisätty kansiomuokkauksen jälkeen",
     "author": "Testi Testaaja",
     "url": "http://www.google.com",
     "likes": 10

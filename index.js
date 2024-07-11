@@ -1,3 +1,4 @@
+/*
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -47,4 +48,13 @@ app.post('/api/blogs', (request, response) => {
 const PORT = config.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
+})
+*/
+
+const app = require('./app') // varsinainen Express-sovellus
+const config = require('./utils/config')
+
+
+app.listen(config.PORT, () => {
+  console.log(`Server running on port ${config.PORT}`)
 })
