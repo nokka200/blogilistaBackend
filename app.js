@@ -16,6 +16,8 @@ mongoose.connect(mongoUrl)
   console.log('error connection to MongoDB:', error.message)
 })
 
+app.use(cors())
+app.use(express.json())
 app.use('/api/notes', blogRouter)
 
 module.exports = app
