@@ -32,7 +32,7 @@ test('blog identifying field names id', async () => {
   })
 })
 
-test.only('a valig blog can be added', async () => { 
+test('a valig blog can be added', async () => {
   const newBlog = {
     title: 'Test Blog',
     author: 'Test Author',
@@ -45,15 +45,31 @@ test.only('a valig blog can be added', async () => {
     .send(newBlog)
     .expect(201)
     .expect('Content-Type', /application\/json/)
-  
-  
+
+
   const response = await api.get('/api/blogs')
 
   const contents = response.body.map(r => r.title)
 
   assert.strictEqual(response.body.length, helper.initialBlog.length + 1)
 
-  assert(contents.includes('Test Blog')) 
+  assert(contents.includes('Test Blog'))
+})
+
+test.only('deleting a blog post', async () => {
+  const blogsAtStart = await helper.blogsInDb()
+  const blogToDelete = blogsAtStart[0]
+
+  await api
+    .delete(`/api/blogs/${blogToDelete.id}`)
+    .expect(204)
+
+  const blogsAtEnd = await helper.blogsInDb()
+
+  assert.strictEqual(blogsAtEnd.length, helper.initialBlog.length - 1)
+
+  const contents = blogsAtEnd.map(r => r.title)
+  assert(!contents.includes(blogToDelete.title))
 })
 
 after(async () => {
