@@ -23,13 +23,37 @@ test('there are two blogs', async () => {
   assert.strictEqual(response.body.length, helper.initialBlog.length)
 })
 
-test.only('blog identifying field names id', async () => {
+test('blog identifying field names id', async () => {
   const response = await api.get('/api/blogs')
   const blogs = response.body
 
   blogs.forEach(element => {
     assert.strictEqual(element.hasOwnProperty('id'), true)
   })
+})
+
+test.only('a valig blog can be added', async () => { 
+  const newBlog = {
+    title: 'Test Blog',
+    author: 'Test Author',
+    url: 'http://test.com',
+    likes: 0,
+  }
+
+  await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(201)
+    .expect('Content-Type', /application\/json/)
+  
+  
+  const response = await api.get('/api/blogs')
+
+  const contents = response.body.map(r => r.title)
+
+  assert.strictEqual(response.body.length, helper.initialBlog.length + 1)
+
+  assert(contents.includes('Test Blog')) 
 })
 
 after(async () => {
