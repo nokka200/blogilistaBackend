@@ -2,7 +2,7 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Lisätty kansiomuokkauksen jälkeen",
+    "title": "Lisätty await/async jälkeen",
     "author": "Testi Testaaja",
     "url": "http://www.google.com",
     "likes": 10

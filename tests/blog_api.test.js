@@ -30,10 +30,19 @@ beforeEach(async () => {
 
 const api = supertest(app)
 
-test.only('there are two blogs', async () => {
+test('there are two blogs', async () => {
   const response = await api.get('/api/blogs')
 
   assert.strictEqual(response.body.length, initialBlog.length)
+})
+
+test.only('blog identifying field names id', async () => {
+  const response = await api.get('/api/blogs')
+  const blogs = response.body
+
+  blogs.forEach(element => {
+    assert.strictEqual(element.hasOwnProperty('id'), true)
+  })
 })
 
 after(async () => {
