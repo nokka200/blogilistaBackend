@@ -1,0 +1,11 @@
+POST http://localhost:3001/api/blogs/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjY2OThjODJkYThmYmIxOWZkYWUyZGVhZCIsImlhdCI6MTcyMTI5MTY4Mn0.WJfKyuMh-FT8kNbcty5UKVly5dCnQz7hh0EUsYPZa-k
+
+{
+    "title": "Lisätty valid token",
+    "author": "Testi Testaaja",
+    "url": "http://www.google.com",
+    "likes": 10,
+    "userId": "6698c82da8fbb19fdae2dead"
+}
