@@ -1,9 +1,10 @@
-POST http://localhost:3001/api/blogs
+POST http://localhost:3001/api/blogs/
 Content-Type: application/json
 
 {
-    "title": "Lisätty await/async jälkeen",
+    "title": "Lisätty liitoksen jälkeen",
     "author": "Testi Testaaja",
     "url": "http://www.google.com",
-    "likes": 10
+    "likes": 10,
+    "userId": "6698c82da8fbb19fdae2dead"
 }
